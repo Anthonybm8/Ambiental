@@ -2,8 +2,40 @@
 {% load static %}
 {% block body %}
 
-<h1>Empleado</h1>
+<br>
+<h1 class="text-center">Listado de Empleados</h1>
+<hr>
+<table class="table table-bordered table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Tipo de empleado</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for empleado in empleados %}
+        <tr>
+            <td>{{ empleado.nombre }}</td>
+            <td>{{ empleado.apellido }}</td>
+            <td>{{ empleado.tipo_empleado }}</td>
+            <td>{{ empleado.email }}</td>
+            <td>{{ empleado.telefono }}</td>
+            <td><a href="{% url 'empleado_editar' empleado.id %}">Editar</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-
+<div class="text-center ">
+    <a href="nuevoAutor" class="btn btn-primary " >
+        Agregar Empleado
+    </a>
+</div>
+<br>
+<br>
 
 {% endblock %}
