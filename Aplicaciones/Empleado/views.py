@@ -32,3 +32,21 @@ def guardarEmpleado(request):
             return redirect('nuevoEmpleado')
     else:
         return redirect('empleado')
+
+def editarEmpleado(request, id):
+    empleado = Empleado.objects.get(id=id)
+    return render(request, 'editarEmpleado.html', {'empleado': empleado})     
+
+def actualizarEmpleado(request, id):
+    if request.method == 'POST':
+        empleado = Empleado.objects.get(id=id)
+        empleado.nombre = request.POST.get('nombre')
+        empleado.apellido = request.POST.get('apellido')
+        empleado.tipo_empleado = request.POST.get('tipo_empleado')
+        empleado.email = request.POST.get('email')
+        empleado.telefono = request.POST.get('telefono')
+        empleado.save()
+        messages.success(request, 'Empleado actualizado correctamente.')
+        return redirect('empleado')
+    else:
+        return redirect('empleado')  

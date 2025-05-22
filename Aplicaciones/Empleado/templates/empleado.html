@@ -24,7 +24,7 @@
             <td>{{ empleado.tipo_empleado }}</td>
             <td>{{ empleado.email }}</td>
             <td>{{ empleado.telefono }}</td>
-            <td><a href="">Editar</a></td>
+            <td><a href="{% url 'editarEmpleado' empleado.id %}">Editar</a></td>
         </tr>
         {% endfor %}
     </tbody>

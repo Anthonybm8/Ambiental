@@ -1,0 +1,37 @@
+{% extends 'plantillas.html' %}
+{% load static %}
+{% block body %}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 bg-light">
+        <h1>Nuevo Empleado</h1>
+        <form action="{% url 'actualizarEmpleado' empleado.id %}" method="post">
+
+            {% csrf_token %}
+
+            <label for="nombre">Nombre</label><br>
+            <input class="form-control" type="text" name="nombre" value="{{empleado.nombre}}" id="nombre" required><br>
+
+            <label for="apellido">Apellido</label><br>
+            <input class="form-control" type="text" name="apellido" value="{{empleado.apellido}}" id="apellido" required><br>
+            
+            <label for="tipo_empleado">Tipo de cargo</label><br>
+            <input class="form-control" type="text" name="tipo_empleado"value="{{empleado.tipo_empleado}}" id="tipo_empleado" required><br>
+
+
+            <label for="email">Email</label><br>
+            <input class="form-control" type="email" name="email"value="{{empleado.email}}" id="email" required><br>
+
+            <label for="telefono">Teléfono</label><br>
+            <input class="form-control" type="text" name="telefono" value="{{empleado.telefono}}" id="telefono" required><br>
+
+            
+            <br>
+            <button class="btn btn-success" type="submit">Guardar</button>
+            <a class="btn btn-outline-danger" href="{% url 'empleado' %}">Cancelar</a><br><br>
+        </form>
+    </div>   
+</div>
+
+{% endblock %}
