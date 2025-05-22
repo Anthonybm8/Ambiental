@@ -17,14 +17,14 @@
         </tr>
     </thead>
     <tbody>
-        {% for empleado in empleados %}
+        {% for empleado in lista_empleados %}
         <tr>
             <td>{{ empleado.nombre }}</td>
             <td>{{ empleado.apellido }}</td>
             <td>{{ empleado.tipo_empleado }}</td>
             <td>{{ empleado.email }}</td>
             <td>{{ empleado.telefono }}</td>
-            <td><a href="{% url 'empleado_editar' empleado.id %}">Editar</a></td>
+            <td><a href="">Editar</a></td>
         </tr>
         {% endfor %}
     </tbody>

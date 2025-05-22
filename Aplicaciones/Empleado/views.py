@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from .models import Empleado
 from django.contrib import messages
 
@@ -9,4 +9,26 @@ def empleado(request):
 def nuevoEmpleado(request):
     return render(request, 'nuevoEmpleado.html')
 
-# Create your views here.
+def guardarEmpleado(request):
+    if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        apellido = request.POST.get('apellido')
+        tipo_empleado = request.POST.get('tipo_empleado')
+        email = request.POST.get('email')
+        telefono = request.POST.get('telefono')
+
+        if nombre and apellido and tipo_empleado and email and telefono:
+            Empleado.objects.create(
+                nombre=nombre,
+                apellido=apellido,
+                tipo_empleado=tipo_empleado,
+                email=email,
+                telefono=telefono
+            )
+            messages.success(request, 'Empleado guardado correctamente.')
+            return redirect('empleado')
+        else:
+            messages.error(request, 'Todos los campos son obligatorios.')
+            return redirect('nuevoEmpleado')
+    else:
+        return redirect('empleado')

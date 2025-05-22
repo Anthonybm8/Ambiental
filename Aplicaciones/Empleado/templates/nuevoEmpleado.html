@@ -6,7 +6,8 @@
     <div class="col-md-3"></div>
     <div class="col-md-6 bg-light">
         <h1>Nuevo Empleado</h1>
-        <form method="post">
+        <form action="{% url 'guardarEmpleado' %}" method="post">
+
             {% csrf_token %}
 
             <label for="nombre">Nombre</label><br>
@@ -14,6 +15,10 @@
 
             <label for="apellido">Apellido</label><br>
             <input class="form-control" type="text" name="apellido" id="apellido" required><br>
+            
+            <label for="tipo_empleado">Tipo de cargo</label><br>
+            <input class="form-control" type="text" name="tipo_empleado" id="tipo_empleado" required><br>
+
 
             <label for="email">Email</label><br>
             <input class="form-control" type="email" name="email" id="email" required><br>
@@ -21,14 +26,10 @@
             <label for="telefono">Teléfono</label><br>
             <input class="form-control" type="text" name="telefono" id="telefono" required><br>
 
-            <label for="direccion">Dirección</label><br>
-            <input class="form-control" type="text" name="direccion" id="direccion" required><br>
-
-            <label for="cargo">Cargo</label><br>
-            <input class="form-control" type="text" name="cargo" id="cargo" required><br>
-
+            
             <br>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button class="btn btn-success" type="submit">Guardar</button>
+            <a class="btn btn-outline-danger" href="{% url 'empleado' %}">Cancelar</a><br><br>
         </form>
     </div>   
 </div>
