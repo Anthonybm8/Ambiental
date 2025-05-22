@@ -24,4 +24,5 @@ urlpatterns = [
     path('', RedirectView.as_view(url=reverse_lazy('empleado'),permanent=False)),
     path('admin/', admin.site.urls),
     path('', include('Aplicaciones.Empleado.urls')),
+    path('', include('Aplicaciones.Espacio.urls')),
 ]

@@ -2,6 +2,39 @@
 {% load static %}
 {% block body %}
 
+<br>
+<h1 class="text-center">Listado de Espacios</h1>
+<hr>
+<table class="table table-bordered table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Ubicacion</th>
+            <th>Descripcion</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for espacio in lista_espacios %}
+        <tr>
+            <td>{{ espacio.nombre }}</td>
+            <td>{{ espacio.apellido }}</td>
+            <td>{{ espacio.tipo_empleado }}</td>
+            <td>{{ espacio.email }}</td>
+            <td><a  href=" {% url 'editarEmpleado' empleado.id %}">Editar <i class="fa fa-pen"></i></a>
+                <a style="color: red;" href="{% url 'eliminarEmpleado' empleado.id %}">Eliminar <i class="fa fa-trash"></i></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="text-center ">
+    <a href="nuevoEspacio" class="btn btn-primary " >
+        Agregar Espacio
+    </a>
+</div>
+<br>
+<br>
 
 
 {% endblock %}
