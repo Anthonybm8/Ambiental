@@ -18,11 +18,11 @@
         {% for espacio in lista_espacios %}
         <tr>
             <td>{{ espacio.nombre }}</td>
-            <td>{{ espacio.apellido }}</td>
-            <td>{{ espacio.tipo_empleado }}</td>
-            <td>{{ espacio.email }}</td>
-            <td><a  href=" {% url 'editarEmpleado' empleado.id %}">Editar <i class="fa fa-pen"></i></a>
-                <a style="color: red;" href="{% url 'eliminarEmpleado' empleado.id %}">Eliminar <i class="fa fa-trash"></i></a></td>
+            <td>{{ espacio.tipo }}</td>
+            <td>{{ espacio.ubicacion }}</td>
+            <td>{{ espacio.descripcion }}</td>
+            <td><a  href=" {% url 'editarEspacio' espacio.id %}">Editar <i class="fa fa-pen"></i></a>
+                <a style="color: red;" href="{% url 'eliminarEspacio' espacio.id %}">Eliminar <i class="fa fa-trash"></i></a></td>
         </tr>
         {% endfor %}
     </tbody>

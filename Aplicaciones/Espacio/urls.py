@@ -4,4 +4,7 @@ urlpatterns = [
     path('espacio', views.espacio, name='espacio'),
     path('nuevoEspacio', views.espacio),
     path('guardarEspacio', views.guardarEspacio, name='guardarEspacio'),
+    path('editarEspacio/<int:id>', views.editarEspacio, name='editarEspacio'),
+    path('actualizarEspacio/<int:id>', views.actualizarEspacio, name='actualizarEspacio'),
+    path('eliminarEspacio/<int:id>', views.eliminarEspacio, name='eliminarEspacio'),
 ]

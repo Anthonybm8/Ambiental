@@ -31,3 +31,26 @@ def guardarEspacio(request):
             return redirect('nuevoEspacio')
     else:
         return redirect('espacio')
+
+def editarEspacio(request, id):
+    espacio = Espacio.objects.get(id=id)
+    return render(request, 'editarEspacio.html', {'espacio': espacio})
+
+def actualizarEspacio(request, id):
+    if request.method == 'POST':
+        espacio = Espacio.objects.get(id=id)
+        espacio.nombre = request.POST.get('nombre')
+        espacio.tipo = request.POST.get('tipo')
+        espacio.ubicacion = request.POST.get('ubicacion')
+        espacio.descripcion = request.POST.get('descripcion')
+        espacio.save()
+        messages.success(request, 'Espacio actualizado correctamente.')
+        return redirect('espacio')
+    else:
+        return redirect('espacio')
+    
+def eliminarEspacio(request, id):
+    espacio = Espacio.objects.get(id=id)
+    espacio.delete()
+    messages.success(request, 'Espacio eliminado correctamente.')
+    return redirect('espacio')

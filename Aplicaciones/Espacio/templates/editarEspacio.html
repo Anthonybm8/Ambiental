@@ -1,0 +1,33 @@
+{% extends 'plantillas.html' %}
+{% load static %}
+{% block body %}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 bg-light">
+        <h1>Nuevo Espacio</h1>
+        <form action="{% url 'actualizarEspacio' espacio.id %}" method="post">
+
+            {% csrf_token %}
+
+            <label for="nombre">Nombre</label><br>
+            <input class="form-control" type="text" name="nombre" value="{{espacio.nombre}}" id="nombre" required><br>
+
+            <label for="tipo">Tipo</label><br>
+            <input class="form-control" type="text" name="tipo" value="{{espacio.tipo}}" id="tipo" required><br>
+            
+            <label for="ubicacion">Ubicacion</label><br>
+            <input class="form-control" type="text" name="ubicacion"value="{{espacio.ubicacion}}" id="ubicacion" required><br>
+
+            <label for="descripcion">Descripcion</label><br>
+            <input class="form-control" type="text" name="descripcion"value="{{espacio.descripcion}}" id="descripcion" required><br>
+
+            
+            <br>
+            <button class="btn btn-success" type="submit">Guardar</button>
+            <a class="btn btn-outline-danger" href="{% url 'espacio' %}">Cancelar</a><br><br>
+        </form>
+    </div>   
+</div>
+
+{% endblock %}
