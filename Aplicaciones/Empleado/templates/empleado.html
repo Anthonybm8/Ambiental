@@ -24,7 +24,8 @@
             <td>{{ empleado.tipo_empleado }}</td>
             <td>{{ empleado.email }}</td>
             <td>{{ empleado.telefono }}</td>
-            <td><a href="{% url 'editarEmpleado' empleado.id %}">Editar</a></td>
+            <td><a  href=" {% url 'editarEmpleado' empleado.id %}">Editar <i class="fa fa-pen"></i></a>
+                <a style="color: red;" href="{% url 'eliminarEmpleado' empleado.id %}">Eliminar <i class="fa fa-trash"></i></a></td>
         </tr>
         {% endfor %}
     </tbody>
@@ -37,5 +38,7 @@
 </div>
 <br>
 <br>
+
+
 
 {% endblock %}

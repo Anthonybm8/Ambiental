@@ -50,3 +50,9 @@ def actualizarEmpleado(request, id):
         return redirect('empleado')
     else:
         return redirect('empleado')  
+    
+def eliminarEmpleado(request, id):
+    empleado = Empleado.objects.get(id=id)
+    empleado.delete()
+    messages.success(request, 'Empleado eliminado correctamente.')
+    return redirect('empleado')
