@@ -9,5 +9,5 @@ class PaisajeSonoro(models.Model):
     duracion = models.DurationField()
     descripcion = models.TextField(blank=True)
 
-    artista = models.ForeignKey(Empleado, on_delete=models.CASCADE, limit_choices_to={'tipo_empleado': 'Artista Sonoro'})
+    artista = models.ForeignKey(Empleado, on_delete=models.CASCADE)
     espacio = models.ForeignKey(Espacio, on_delete=models.CASCADE)
