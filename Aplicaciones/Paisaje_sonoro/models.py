@@ -6,7 +6,7 @@ from Aplicaciones.Espacio.models import Espacio
 class PaisajeSonoro(models.Model):
     titulo = models.CharField(max_length=100)
     fecha_creacion = models.DateField()
-    duracion = models.DurationField()
+    duracion = models.CharField(max_length=10)
     descripcion = models.TextField(blank=True)
 
     artista = models.ForeignKey(Empleado, on_delete=models.CASCADE)

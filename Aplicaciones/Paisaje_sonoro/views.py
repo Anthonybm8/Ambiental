@@ -6,17 +6,20 @@ from django.contrib import messages
 
 # Create your views here.
 def paisajesonoro(request):
-    return render(request, 'paisajesonoro.html')
+    listadoPaisajesonoro = PaisajeSonoro.objects.all()
+    return render(request, 'paisaje_sonoro.html', {'paisajesonoro': listadoPaisajesonoro})
+
 def nuevoPaisajeSonoro(request):
     tartista = Empleado.objects.all()
     tespacio = Espacio.objects.all()
-    return render(request, 'nuevoPaisajeSonoro.html', {'paisajesonoro': listadoPaisajesonoro})
+    return render(request, 'nuevoPaisaje.html', {'empleados': tartista, 'espacios': tespacio})
+
 def guardarPaisajeSonoro(request):
     titulo = request.POST["titulo"]
     fecha_creacion = request.POST["fecha_creacion"]
     duracion = request.POST["duracion"]
     descripcion = request.POST["descripcion"]
-    artista = request.POST["artista"]
+    artista = request.POST["empleado"]
     artista = Empleado.objects.get(id=artista)
     espacio = request.POST["espacio"]
     espacio = Espacio.objects.get(id=espacio)
@@ -29,4 +32,27 @@ def guardarPaisajeSonoro(request):
         espacio=espacio
     )
     messages.success(request,"paisaje guardado exitosamente")
+    return redirect('sonoro')
+
+def editarPaisajeSonoro(request, id):
+    paisajesonoroeditar = PaisajeSonoro.objects.get(id=id)
+    tartista = Empleado.objects.all()
+    tespacio = Espacio.objects.all()
+    return render(request, 'editarPaisajeSonoro.html', {'paisajesonoroeditar': paisajesonoroeditar, 'tartista': tartista, 'tespacio': tespacio})
+
+def procesoEdicionPaisajeSonoro(request):
+    id = request.POST["id"]
+    paisajesonoroeditar = PaisajeSonoro.objects.get(id=id)
+    paisajesonoroeditar.titulo = request.POST["titulo"]
+    paisajesonoroeditar.fecha_creacion = request.POST["fecha_creacion"]
+    paisajesonoroeditar.duracion = request.POST["duracion"]
+    paisajesonoroeditar.descripcion = request.POST["descripcion"]
+    paisajesonoroeditar.artista = request.POST["artista"]
+    paisajesonoroeditar.espacio = request.POST["espacio"]
+    paisajesonoroeditar = Empleado.objects.get(id=paisajesonoroeditar.artista)
+    paisajesonoroeditar=Espacio.objects.get(id=paisajesonoroeditar.espacio)
+    paisajesonoro=PaisajeSonoro.objects.get(id=id)
+
+    paisajesonoroeditar.save()
+    messages.success(request,"paisaje editado exitosamente")
     return redirect('paisaje_sonoro')

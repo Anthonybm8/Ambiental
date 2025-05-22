@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Aplicaciones.Empleado.urls')),
     path('', include('Aplicaciones.Espacio.urls')),
+    path('', include('Aplicaciones.Paisaje_sonoro.urls')),
 ]

@@ -1,0 +1,49 @@
+{% extends 'plantillas.html' %}
+{% load static %}
+{% block body %}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 bg-light">
+        <h1>Nuevo Pisaje</h1>
+        <form action="{% url 'guardarPaisajeSonoro' %}" method="post">
+
+            {% csrf_token %}
+
+            <label for="titulo">Titulo</label><br>
+            <input class="form-control" type="text" value="{{p.titulo}}" name="titulo" id="titulo" required><br>
+
+            <label for="fecha_creacion">Fecha de Creacion</label><br>
+            <input class="form-control" type="date" value="{{p.fecha_creacion}}" name="fecha_creacion" id="fecha_creacion" required><br>
+            
+            <label for="duracion">Duracion</label><br>
+            <input class="form-control" type="text" value="{{p.duracion}}" name="duracion" id="duracion" required><br>
+
+
+            <label for="descripcion">Descripcion</label><br>
+            <input class="form-control" type="text" value="{{p.descripcion}}" name="descripcion" id="descripcion" required><br>
+
+            <label for="artista">Artista</label><br>
+            <select name="empleado" id="empleado" class="form-control">
+                <option value="">Seleccione un empleado</option>
+                {% for empleado in empleados %}
+                    <option value="{{ empleado.id }}" {% if empleado.id == p.empleado.id %} selected {% endif %}>{{ empleado.nombre }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="espacio">Espacio</label><br>
+            <select name="espacio" id="espacio" class="form-control">
+                <option value="">Seleccione un espacio</option>
+                {% for espacio in espacios %}
+                    <option value="{{ espacio.id }}"{% if espacio.id == p.espacio.id %} selected {% endif %}>{{ espacio.nombre }}</option>
+                {% endfor %}
+            </select><br>
+            
+            <br>
+            <button class="btn btn-success" type="submit">Guardar</button>
+            <a class="btn btn-outline-danger" href="{% url 'empleado' %}">Cancelar</a><br><br>
+        </form>
+    </div>   
+</div>
+
+{% endblock %}
