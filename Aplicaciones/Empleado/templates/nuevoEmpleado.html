@@ -5,31 +5,32 @@
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6 bg-light">
-        <h1>Nuevo Empleado</h1>>
-        <form>
-            {% crsf_token %}
+        <h1>Nuevo Empleado</h1>
+        <form method="post">
+            {% csrf_token %}
 
             <label for="nombre">Nombre</label><br>
             <input class="form-control" type="text" name="nombre" id="nombre" required><br>
 
-            <label for="nombre">Apellido</label><br>
-            <input class="form-control" type="text" name="nombre" id="nombre" required><br>
+            <label for="apellido">Apellido</label><br>
+            <input class="form-control" type="text" name="apellido" id="apellido" required><br>
 
-            <label for="nombre">Nombre</label><br>
-            <input class="form-control" type="text" name="nombre" id="nombre" required><br>
+            <label for="email">Email</label><br>
+            <input class="form-control" type="email" name="email" id="email" required><br>
 
-            <label for="nombre">Nombre</label><br>
-            <input class="form-control" type="text" name="nombre" id="nombre" required><br>
+            <label for="telefono">Teléfono</label><br>
+            <input class="form-control" type="text" name="telefono" id="telefono" required><br>
 
-            <label for="nombre">Nombre</label><br>
-            <input class="form-control" type="text" name="nombre" id="nombre" required><br>
+            <label for="direccion">Dirección</label><br>
+            <input class="form-control" type="text" name="direccion" id="direccion" required><br>
 
-            <label for="nombre">Nombre</label><br>
-            <input class="form-control" type="text" name="nombre" id="nombre" required><br>
+            <label for="cargo">Cargo</label><br>
+            <input class="form-control" type="text" name="cargo" id="cargo" required><br>
+
+            <br>
+            <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
-
     </div>   
-
 </div>
 
 {% endblock %}
