@@ -38,7 +38,7 @@ def editarPaisajeSonoro(request, id):
     paisajesonoroeditar = PaisajeSonoro.objects.get(id=id)
     tartista = Empleado.objects.all()
     tespacio = Espacio.objects.all()
-    return render(request, 'editarPaisajeSonoro.html', {'paisajesonoroeditar': paisajesonoroeditar, 'tartista': tartista, 'tespacio': tespacio})
+    return render(request, 'editarPaisajeSonoro.html', {'p': paisajesonoroeditar, 'empleados': tartista, 'espacios': tespacio})
 
 def procesoEdicionPaisajeSonoro(request):
     id = request.POST["id"]

@@ -24,7 +24,7 @@
             <input class="form-control" type="text" name="descripcion" id="descripcion" required><br>
 
             <label for="artista">Artista</label><br>
-            <select name="artista" id="artista" class="form-control">
+            <select name="empleado" id="empleado" class="form-control">
                 <option value="">Seleccione un empleado</option>
                 {% for empleado in empleados %}
                     <option value="{{ empleado.id }}">{{ empleado.nombre }}</option>

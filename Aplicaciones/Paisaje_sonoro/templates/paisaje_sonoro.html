@@ -25,7 +25,7 @@
             <td>{{ paisaje.descripcion }}</td>
             <td>{{ paisaje.artista.nombre }}</td>
             <td>{{ paisaje.espacio.nombre }}</td>
-            <td><a  href="">Editar <i class="fa fa-pen"></i></a>
+            <td><a  href="{% url 'editarPaisajeSonoro' paisaje.id %}">Editar <i class="fa fa-pen"></i></a>
                 <a style="color: red;" href="">Eliminar <i class="fa fa-trash"></i></a></td>
         </tr>
         {% endfor %}
